@@ -4,52 +4,83 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../homework/css/styles.css" />
   <title>Login </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
-<nav>
-  <div>
-    <ul>
-      <li><a class="nav-link" href="index.html">Home</a></li>
-      <li><a class="nav-link" href="login.html">Login</a></li>
-      <li><a class="nav-link" href="registration.html">Registration</a></li>
-      <li><a class="nav-link" href="products.html">Products</a></li>
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: lightpink;">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="registration.html">Registration</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login.html">Log in</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="products.html">Products</a>
+      </li>
     </ul>
   </div>
 </nav>
 
-<h1> Log in here </h1>
+<h1 style="text-align: center;">Log in yourself</h1>
+<form name="FormOfLogin" onsubmit="return validation()" method="post">
 
 
+  <p>E-mail Address: <input type="text"
+                            size="65" name="EMail" /></p>
 
-<form>
-  <table>
-    <tr>
-      <td>
-        Email Address:
-      </td>
+  <br />
 
-      <td>
-        <input type=”mail”  placeholder=”Email” name=””>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Password:
-      </td>
+  <p>Password: <input type="text"
+                      size="65" name="Password" /></p>
 
-      <td>
-        <input type=”Password” placeholder=”Password” name=””>
-      </td>
-    </tr>
+  <br />
 
-    <tr>
-      <td>
-    <input type="submit" value="Submit">
-      </td>
-    </tr>
-  </table>
+  <p>
+    <input type="submit"
+           value="Send" name="Submit" />
+    <input type="reset"
+           value="Reset" name="Reset" />
+  </p>
+
 </form>
+<script>
+  function validation() {
+    var email =
+      document.forms.FormOfLogin.EMail.value;
+    var password =
+      document.forms.FormOfLogin.Password.value;
+    var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
 
+
+    if (email === "" || !regEmail.test(email)) {
+      window.alert("Email should be correct");
+      email.focus();
+      return false;
+    }
+
+    if (password === "") {
+      alert("Please enter your password");
+      password.focus();
+      return false;
+    }
+
+    if(password.length <6){
+      alert("Password should be at least 6 character long");
+      password.focus();
+      return false;
+
+    }
+    return true;
+  }
+</script>
 
 <footer id="footer"> Made by Sveta in 2022 </footer>
 
